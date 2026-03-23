@@ -32,11 +32,6 @@ export default function HomePage() {
 
   return (
     <main className="main-container">
-      <div className="bg-blur">
-        <div className="blob blob-1"></div>
-        <div className="blob blob-2"></div>
-      </div>
-
       <div className="hero-card">
         <span className="badge">New Integration Ready</span>
         <h1>Creem + DataFast</h1>
