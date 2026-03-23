@@ -19,7 +19,7 @@ export function getCreemDataFast() {
     creemApiKey,
     creemWebhookSecret,
     datafastApiKey,
-    testMode: process.env.NODE_ENV !== 'production',
+    testMode: process.env.CREEM_TEST_MODE === 'true' || process.env.NODE_ENV !== 'production',
   });
 
   return client;
