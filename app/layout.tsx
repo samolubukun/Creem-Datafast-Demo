@@ -13,17 +13,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const websiteId = process.env.NEXT_PUBLIC_DATAFAST_WEBSITE_ID;
+  const websiteId = process.env.NEXT_PUBLIC_DATAFAST_WEBSITE_ID || 'dfid_K7bBs0D7GY2RF9K7Vm0o2';
 
   return (
     <html lang="en">
       <body>
-        {websiteId && (
-          <Script
-            src={`https://cdn.datafa.st/tracking.js?id=${websiteId}`}
-            strategy="afterInteractive"
-          />
-        )}
+        <Script
+          src={`https://cdn.datafa.st/tracking.js?id=${websiteId}`}
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
