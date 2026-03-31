@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import type { CSSProperties } from 'react';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,12 +30,12 @@ export default function PaymentSuccessPage() {
     });
   }, []);
 
-  const styles = {
+  const styles: Record<string, CSSProperties> = {
     main: { minHeight: '100vh', padding: '4rem 2rem', background: 'radial-gradient(circle at 0% 0%, rgba(16,185,129,0.08) 0%, transparent 40%), #030712' },
     card: { maxWidth: 600, margin: '0 auto', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 24, padding: '3rem' },
     icon: { width: 80, height: 80, borderRadius: '50%', background: 'rgba(16,185,129,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem', fontSize: '2.5rem' },
-    title: { fontSize: '2rem', fontWeight: 700, color: '#fff', textAlign: 'center' as const },
-    subtitle: { fontSize: '1.125rem', color: '#9ca3af', textAlign: 'center' as const, marginBottom: '2rem' },
+    title: { fontSize: '2rem', fontWeight: 700, color: '#fff', textAlign: 'center' },
+    subtitle: { fontSize: '1.125rem', color: '#9ca3af', textAlign: 'center', marginBottom: '2rem' },
     attributionBox: { background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: '1.5rem', marginTop: '1.5rem' },
     attributionTitle: { fontSize: '0.875rem', fontWeight: 600, color: '#fff', marginBottom: '1rem' },
     attributionItem: { display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.05)' },
