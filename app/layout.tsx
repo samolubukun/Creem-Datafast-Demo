@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 import './globals.css';
 
@@ -14,6 +15,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          defer
+          data-website-id="dfid_K7bBs0D7GY2RF9K7Vm0o2"
+          data-domain="creem-datafast-demo-wine.vercel.app"
+          src="https://datafa.st/js/script.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body>
         {children}
       </body>

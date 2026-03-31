@@ -31,8 +31,8 @@ const styles = {
     alignItems: 'center',
     gap: 6,
     padding: '0.25rem 0.75rem',
-    background: ready ? 'rgba(16,185,129,0.15)' : 'rgba(107,114,128,0.15)',
-    color: ready ? '#10b981' : '#9ca3af',
+    background: ready ? 'rgba(16,185,129,0.15)' : 'rgba(251,191,36,0.15)',
+    color: ready ? '#10b981' : '#fbbf24',
     borderRadius: 100,
     fontSize: '0.75rem',
     fontWeight: 500,
@@ -41,7 +41,7 @@ const styles = {
     width: 6,
     height: 6,
     borderRadius: '50%',
-    background: ready ? '#10b981' : '#9ca3af',
+    background: ready ? '#10b981' : '#fbbf24',
   }),
   grid: {
     display: 'grid',
@@ -112,28 +112,28 @@ export function TrackingStatus() {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <span style={styles.title}>Tracking Status</span>
+        <span style={styles.title}>Live Tracking</span>
         <span style={styles.statusBadge(ready)}>
           <span style={styles.dot(ready)} />
-          {ready ? 'Tracking Active' : 'Manual Mode'}
+          {ready ? 'Attribution Ready' : 'Warming Up'}
         </span>
       </div>
       <div style={styles.grid}>
         <div style={styles.item}>
           <div style={styles.label}>Visitor ID</div>
           <div style={tracking.visitorId ? styles.value : styles.pending}>
-            {tracking.visitorId || 'Set via ?datafast_visitor_id=xxx'}
+            {tracking.visitorId || 'Waiting for DataFast...'}
           </div>
         </div>
         <div style={styles.item}>
           <div style={styles.label}>Session ID</div>
           <div style={tracking.sessionId ? styles.value : styles.pending}>
-            {tracking.sessionId || 'Set via ?datafast_session_id=xxx'}
+            {tracking.sessionId || 'pending'}
           </div>
         </div>
       </div>
       <div style={styles.meta}>
-        <span>Add visitor ID to URL params for attribution</span>
+        <span>Domain: {typeof window !== 'undefined' ? window.location.hostname : 'localhost'}</span>
       </div>
     </div>
   );
