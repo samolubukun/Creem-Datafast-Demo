@@ -266,14 +266,7 @@ export function CheckoutFlow() {
             disabled={loading}
             style={styles.primaryBtn(loading)}
           >
-            {loading ? 'Processing...' : 'Server Checkout'}
-          </button>
-          <button
-            onClick={handleHostedCheckout}
-            disabled={!tracking.visitorId}
-            style={styles.secondaryBtn(!tracking.visitorId)}
-          >
-            Open Hosted Link
+            {loading ? 'Processing...' : 'Buy Now'}
           </button>
         </div>
         {error && <div style={styles.error}>{error}</div>}
