@@ -6,13 +6,14 @@ export async function POST(request: Request) {
   try {
     const creemDataFast = getCreemDataFast();
     const url = request.url;
+    const cookieHeader = request.headers.get('cookie') || '';
     
     const { checkoutUrl } = await creemDataFast.createCheckout(
       {
         productId: process.env.CREEM_PRODUCT_ID!,
         successUrl: `${process.env.APP_URL ?? new URL(url).origin}/payment/success`,
       },
-      { request: { url } }
+      cookieHeader
     );
 
     return NextResponse.json({ checkoutUrl });
