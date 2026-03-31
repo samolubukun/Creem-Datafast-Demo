@@ -259,7 +259,7 @@ export function CheckoutFlow() {
 
       <div style={styles.checkoutCard}>
         <div style={styles.productName}>Demo Product</div>
-        <div style={styles.price}>$40.00</div>
+        <div style={styles.price}>$10.00</div>
         <div style={styles.buttonGroup}>
           <button
             onClick={handleServerCheckout}

@@ -93,10 +93,9 @@ export default function HomePage() {
         </div>
 
         <footer style={styles.footer}>
-          <span>Source: <a href="https://github.com/SudhanPlayz/creem-datafast" target="_blank" rel="noopener" style={styles.link}>GitHub</a></span>
+          <span>Source: <a href="https://github.com/samolubukun/Creem-DataFast-Integration" target="_blank" rel="noopener" style={styles.link}>GitHub</a></span>
           <span>Success: /payment/success</span>
           <span>Webhook: /api/webhook/creem</span>
-          <span>Proxy: /api/events</span>
         </footer>
       </div>
     </main>
