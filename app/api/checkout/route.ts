@@ -5,12 +5,14 @@ import { getCreemDataFast } from '@/lib/creem-datafast';
 export async function POST(request: Request) {
   try {
     const creemDataFast = getCreemDataFast();
+    const url = request.url;
+    
     const { checkoutUrl } = await creemDataFast.createCheckout(
       {
         productId: process.env.CREEM_PRODUCT_ID!,
-        successUrl: `${process.env.APP_URL ?? new URL(request.url).origin}/payment/success`,
+        successUrl: `${process.env.APP_URL ?? new URL(url).origin}/payment/success`,
       },
-      { request }
+      { request: { url } }
     );
 
     return NextResponse.json({ checkoutUrl });
