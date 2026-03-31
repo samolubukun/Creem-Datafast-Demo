@@ -1,29 +1,33 @@
-import { Suspense, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+'use client';
+
+import { useEffect, useState } from 'react';
 
 export const dynamic = 'force-dynamic';
 
-function PaymentSuccessContent() {
-  const searchParams = useSearchParams();
+export default function PaymentSuccessPage() {
   const [tracking, setTracking] = useState<{ visitorId: string | null; sessionId: string | null }>({ visitorId: null, sessionId: null });
 
   useEffect(() => {
-    const params = searchParams;
+    if (typeof window === 'undefined') return;
+    
+    const params = new URLSearchParams(window.location.search);
     const vid = params.get('datafast_visitor_id');
     const sid = params.get('datafast_session_id');
+    
     const cookies = document.cookie.split(';');
-    let visitorId: string | null = null;
-    let sessionId: string | null = null;
+    let cookieVid: string | null = null;
+    let cookieSid: string | null = null;
     for (const cookie of cookies) {
       const [name, ...valueParts] = cookie.trim().split('=');
-      if (name === 'datafast_visitor_id') visitorId = valueParts.join('=') || null;
-      if (name === 'datafast_session_id') sessionId = valueParts.join('=') || null;
+      if (name === 'datafast_visitor_id') cookieVid = valueParts.join('=') || null;
+      if (name === 'datafast_session_id') cookieSid = valueParts.join('=') || null;
     }
+    
     setTracking({
-      visitorId: vid || visitorId,
-      sessionId: sid || sessionId,
+      visitorId: vid || cookieVid,
+      sessionId: sid || cookieSid,
     });
-  }, [searchParams]);
+  }, []);
 
   const styles = {
     main: { minHeight: '100vh', padding: '4rem 2rem', background: 'radial-gradient(circle at 0% 0%, rgba(16,185,129,0.08) 0%, transparent 40%), #030712' },
@@ -56,13 +60,5 @@ function PaymentSuccessContent() {
         <a href="/" style={styles.backBtn}>Back to Demo</a>
       </div>
     </main>
-  );
-}
-
-export default function PaymentSuccessPage() {
-  return (
-    <Suspense fallback={<div style={{padding:'2rem',textAlign:'center',color:'#9ca3af'}}>Loading...</div>}>
-      <PaymentSuccessContent />
-    </Suspense>
   );
 }
