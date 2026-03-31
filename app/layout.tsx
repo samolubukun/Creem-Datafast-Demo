@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 
 import './globals.css';
 
@@ -13,17 +12,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const websiteId = process.env.NEXT_PUBLIC_DATAFAST_WEBSITE_ID || 'dfid_K7bBs0D7GY2RF9K7Vm0o2';
-  const domain = process.env.NEXT_PUBLIC_DATAFAST_DOMAIN || 'creem-datafast-demo-wine.vercel.app';
-
   return (
     <html lang="en">
       <body>
-        <Script
-          src={`https://cdn.datafa.st/tracking.js?id=${websiteId}`}
-          strategy="afterInteractive"
-          data-domain={domain}
-        />
         {children}
       </body>
     </html>
