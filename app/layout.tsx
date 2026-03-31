@@ -14,6 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const websiteId = process.env.NEXT_PUBLIC_DATAFAST_WEBSITE_ID || 'dfid_K7bBs0D7GY2RF9K7Vm0o2';
+  const domain = process.env.NEXT_PUBLIC_DATAFAST_DOMAIN || 'creem-datafast-demo-wine.vercel.app';
 
   return (
     <html lang="en">
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Script
           src={`https://cdn.datafa.st/tracking.js?id=${websiteId}`}
           strategy="afterInteractive"
+          data-domain={domain}
         />
         {children}
       </body>
